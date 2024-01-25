@@ -1,0 +1,35 @@
+table {
+    border: 1px solid rgb(212, 208, 208);
+    text-align: center;
+
+ }
+ 
+ th {
+    border: 1px solid rgb(212, 208, 208);
+ }
+
+ td {
+    border: 1px solid rgb(212, 208, 208);
+    padding: 10px;    
+ }
+
+ table {
+    border-collapse: collapse;
+}
+
+tr > td:nth-child(2) {
+    width: auto;
+ }
+
+ tr > td:nth-child(4) {
+    width: 50px;
+ }
+
+ .place_title {
+    background-color: rgb(45, 176, 180);
+ }
+
+ caption {
+    padding: 10px;
+    font-size: 20px;
+ }
