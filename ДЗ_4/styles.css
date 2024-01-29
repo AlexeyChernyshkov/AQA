@@ -1,0 +1,83 @@
+.general{
+    width: 400px;
+    height: 400px;
+    background-color: #4F89BF;
+}
+
+.input-field{
+    margin-bottom: 20px;
+    width: 300px;
+}
+
+.input {
+    margin-left: 50px;
+    background-color: #303245;
+    border-radius: 3px;
+    border: 0;
+    box-sizing: border-box;
+    color: rgba(0, 97, 138, 0.8);
+    font-family: sans-serif;
+    font-size: 18px;
+    height: 40px;
+    outline: 0;
+    padding-left: 6px;
+    padding: auto;
+    width: 100%;
+    background-color: #FFFFFF;
+
+  }
+
+  .select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,<svg height='15px' width='15px' viewBox='0 0 16 16' fill='%23c4e1ee' xmlns='http://www.w3.org/2000/svg'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>");
+    background-repeat: no-repeat;
+    background-color: #fff;
+    background-position: calc(100% - 15px) center;
+}
+
+.input::placeholder{
+    color: rgba(0, 97, 138, 0.8);
+    transform-origin: 80%;
+}
+
+.submit{
+    color: #303245;
+    font-family: sans-serif;
+    /* left: 20px; */
+    line-height: 14px;
+    pointer-events: none;
+    /* position: absolute; */
+    transform-origin: 0 50%;
+    transition: transform 200ms, color 200ms;
+    top: 20px;
+  }
+
+.form_name{
+    font-family: sans-serif;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+    font-size: 24px;
+}
+
+h1{
+    padding-top: 10px;
+    margin-bottom: 15px;
+}
+
+.button{
+    text-align: center;
+}
+
+.submit1{
+    background-color: rgba(0, 97, 138, 1);
+    height: 40px;
+    width: 220px;
+    border: 0;
+    border-radius: 10px;
+    font-size: 30px;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: sans-serif;
+}
+
