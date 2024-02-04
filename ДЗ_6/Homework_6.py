@@ -5,11 +5,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-
 driver = webdriver.Chrome()
 driver.get("https://calcus.ru/kalkulyator-ipoteki")
-
-
 
 try:
     cost = WebDriverWait(driver, 10).until(
@@ -25,10 +22,18 @@ try:
         EC.visibility_of_element_located((By.CSS_SELECTOR, ".result-placeholder-ad"))
     )
 
-    driver.execute_script("scroll(0, 800)")
-    time.sleep(2)
-    driver.save_screenshot("result.png")
+    wait = WebDriverWait(driver, timeout=10)
+    wait.until(EC.invisibility_of_element_located((By.XPATH, "//div[@class='loading-overlay']")))
 
+    driver.execute_script("document.body.style.zoom='60%'")
+
+    driver.execute_script("window.scrollTo(0, 100)")
+
+    wait = WebDriverWait(driver, timeout=10)
+    wait.until(EC.invisibility_of_element_located((By.XPATH, "//div[@class='loading-overlay']")))
+
+    time.sleep(1)
+    driver.save_screenshot("result.png")
 
 finally:
     driver.quit()
