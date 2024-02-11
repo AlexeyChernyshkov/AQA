@@ -3,8 +3,7 @@
 
 #Ссылка на тесты: https://docs.google.com/spreadsheets/d/1qH_WlbfaGLw-Pnb8U2DdNistBdOlMPZ5RMr7R12uXzM/edit?usp=sharing
 
-
-
+#На данный момент автотесты не написаны
 
 
 
