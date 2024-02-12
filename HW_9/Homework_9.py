@@ -1,32 +1,30 @@
 #Пока что проект для диплома не выбрал.
-# Тест-кейсы будут для страницы https://makarova1507ana.github.io/to_do_list_test_example/
 
+# Тест-кейсы будут для страницы https://makarova1507ana.github.io/to_do_list_test_example/
 
 #Ссылка на тесты: https://docs.google.com/spreadsheets/d/1qH_WlbfaGLw-Pnb8U2DdNistBdOlMPZ5RMr7R12uXzM/edit?usp=sharing
 
-#На данный момент автотесты не написаны
 
-
-import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 import pytest
 
 
-
 @pytest.fixture
 def browser():
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument("--headless")
     print("\nstart browser for test..")
-    browser = webdriver.Chrome()
+    browser = webdriver.Chrome(options=chrome_options)
     browser.get(link)
     browser.implicitly_wait(5)
     yield browser
     print("\nquit browser..")
     browser.quit()
 
-link = 'https://makarova1507ana.github.io/to_do_list_test_example/'
 
+link = 'https://makarova1507ana.github.io/to_do_list_test_example/'
 
 
 def find_and_click_input(browser):
@@ -119,4 +117,36 @@ def test_7_create_two_task(browser):
     task7_2_check = browser.find_element(By.XPATH, '/html/body/ul/li[text() = "Task 7_2"]')
     assert task7_2_check.is_displayed(), "Task 7_2 not found"
 
+
+def test_8_check_two_task(browser):
+    input8_1 = find_and_click_input(browser)
+    input8_1.send_keys('Task 8_1')
+    create_task_click(browser)
+    input8_2 = find_and_click_input(browser)
+    input8_2.send_keys('Task 8_2')
+    create_task_click(browser)
+    check_box_1 = browser.find_element(By.CSS_SELECTOR, 'body > ul > li:nth-child(1) > input[type=checkbox]')
+    check_box_1.click()
+    check_box_2 = browser.find_element(By.CSS_SELECTOR, 'body > ul > li:nth-child(2) > input[type=checkbox]')
+    check_box_2.click()
+    assert check_box_1.is_selected(), 'Checkbox is not selected'
+    assert check_box_2.is_selected(), 'Checkbox is not selected'
+
+
+def test_9_delete_two_task(browser):
+    input9_1 = find_and_click_input(browser)
+    input9_1.send_keys('Task 9_1')
+    create_task_click(browser)
+    input9_2 = find_and_click_input(browser)
+    input9_2.send_keys('Task 9_2')
+    create_task_click(browser)
+    check_box = browser.find_element(By.CSS_SELECTOR, 'body > ul > li:nth-child(1) > input[type=checkbox]')
+    check_box.click()
+    check_box = browser.find_element(By.CSS_SELECTOR, 'body > ul > li:nth-child(2) > input[type=checkbox]')
+    check_box.click()
+    delete_task_click(browser)
+    locator = '/html/body/ul/li[text() = "Task 9_1"]'
+    assert not element_is_not_present(browser, locator), "Element 'Task 9_1' found"
+    locator = '/html/body/ul/li[text() = "Task 9_2"]'
+    assert not element_is_not_present(browser, locator), "Element 'Task 9_2' found"
 
