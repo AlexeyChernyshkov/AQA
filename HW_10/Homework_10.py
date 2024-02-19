@@ -6,7 +6,6 @@ class Bank_Account():
     def show(self):
         print(f"Owner {self._name} has ${self._balance} on balance")
 
-
     def deposit(self, money):
         self._balance += money
         print(f"Balance: {self._balance}")
@@ -19,31 +18,28 @@ class Bank_Account():
             self._balance -= money
             print(f"Balance: {self._balance}")
 
-
-def operation_choice(owner):
-    choice = int(input(f"Choose operation:\n"
-                       f"1 — Сash withdrawal\n"
-                       f"2 — Cash deposit\n"
-                       f"3 — No, thanks\n"))
-    if choice == 3:
-        print("Exit...")
-        exit()
-    else:
-        try:
-            summ = int(input("Input summ of operation:\n"))
-        except ValueError:
-            print("Only 'int' variable")
-    if choice == 1:
-        owner.withdrawal(summ)
-    elif choice == 2:
-        owner.deposit(summ)
-    else:
-        print("No operation. Exit...")
-        exit()
+    def operation_choice(self):
+        choice = int(input(f"Choose operation:\n"
+                           f"1 — Сash withdrawal\n"
+                           f"2 — Cash deposit\n"
+                           f"3 — No, thanks\n"))
+        if choice == 3:
+            print("Exit...")
+            exit()
+        else:
+            try:
+                summ = int(input("Input summ of operation:\n"))
+            except ValueError:
+                print("Only 'int' variable")
+        if choice == 1:
+            self.withdrawal(summ)
+        elif choice == 2:
+            self.deposit(summ)
+        else:
+            print("No operation. Exit...")
+            exit()
 
 
 owner1 = Bank_Account("Ivan", 20000)
-
-
 owner1.show()
-operation_choice(owner1)
+owner1.operation_choice()
