@@ -3,14 +3,14 @@ class Bank_Account():
         self._name = name
         self._balance = balance
 
-    def show(self):
+    def show(self): # Просмотр баланса
         print(f"Owner {self._name} has ${self._balance} on balance")
 
-    def deposit(self, money):
+    def deposit(self, money):   # Депозит на балансу
         self._balance += money
         print(f"Balance: {self._balance}")
 
-    def withdrawal(self, money):
+    def withdrawal(self, money): # Снятие средств
         if money > self._balance:
             print(f"Not enough money. Can withdrawal only ${self._balance}")
             exit()
@@ -18,7 +18,7 @@ class Bank_Account():
             self._balance -= money
             print(f"Balance: {self._balance}")
 
-    def operation_choice(self):
+    def operation_choice(self): # Выбор операции
         choice = int(input(f"Choose operation:\n"
                            f"1 — Сash withdrawal\n"
                            f"2 — Cash deposit\n"
@@ -27,10 +27,8 @@ class Bank_Account():
             print("Exit...")
             exit()
         else:
-            try:
-                summ = int(input("Input summ of operation:\n"))
-            except ValueError:
-                print("Only 'int' variable")
+            summ = int(input("Input summ of operation:\n"))
+            assert summ >= 0 and type(summ) == int, "Error! Invalid amount value"
         if choice == 1:
             self.withdrawal(summ)
         elif choice == 2:
